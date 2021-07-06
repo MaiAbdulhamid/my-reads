@@ -4,15 +4,17 @@ import BookShelf from "./BookShelf";
 
 const ListShelves = ({ books, onChangeShelf }) => {
 
-  const currentlyReading = books.filter(book => book.shelf === 'currentlyReading');
-  const wantToRead = books.filter(book => book.shelf === 'wantToRead');
-  const read = books.filter(book => book.shelf === 'read')
+  const bookshelves = [
+    { key: 'currentlyReading', title: 'Currently Reading' },
+    { key: 'wantToRead', title: 'Want to Read' },
+    { key: 'read', title: 'Read' },
+  ];
 
   return(
     <div className="list-books-content"> 
-      <BookShelf shelfBooks={currentlyReading} title='Currently Reading' onChangeShelf={onChangeShelf} />
-      <BookShelf shelfBooks={wantToRead} title='Want To Read' onChangeShelf={onChangeShelf} />
-      <BookShelf shelfBooks={read} title='Read' onChangeShelf={onChangeShelf} />
+      {bookshelves.map(shelf => (
+        <BookShelf key={shelf.key} shelf={shelf} books={books} onChangeShelf={onChangeShelf} />
+      ))}
     </div>
   );
 }

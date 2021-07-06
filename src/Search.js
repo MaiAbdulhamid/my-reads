@@ -20,14 +20,14 @@ class Search extends Component {
       BooksAPI.search(query)
       .then(books => {
         if(books.error){
-          this.setState({ error: books });
+          this.setState({ error: books, result: [] });
         }else {
           this.setState({ result: books });
         }
-      })      
+      })
       .catch(error => {
         this.setState({ result: error });
-      }) 
+      })
     }else {
       this.setState({ result: [] })
     }
@@ -55,9 +55,7 @@ class Search extends Component {
         return b;
       });
       return book;
-    }).filter(b => (
-      b.title.toLowerCase().includes(query.toLowerCase())
-    ));
+    });
 
     const searchTerms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
  
@@ -80,7 +78,7 @@ class Search extends Component {
           <ol className="books-grid">
             {searchResult.length > 0 ? searchResult.map((book, index) => (
               <li key={index}>
-                <Book book={book} onChangeShelf={onChangeShelf} />
+                <Book book={book} shelf={book.shelf} onChangeShelf={onChangeShelf} />
               </li>
             )) : (<li className="no-matched"> <p>{error.error && `There is an Error: ${error.error}`} </p> Please Make Sure That Search Terms is: {searchTerms.join(', ')} </li>)}
           </ol>
