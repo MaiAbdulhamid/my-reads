@@ -2,9 +2,9 @@
 
 - MyReads is an app that allows to place books in one of three categories:
 
-  1. Currently Reading
-  2. Want to Read
-  3. Read
+  * Currently Reading
+  * Want to Read
+  * Read
 
 - Provides the ability to search for specific books.
 - Books Can be Moved between categories. 
@@ -13,7 +13,7 @@
 
 To get started:
 
-* `$ git clone https://github.com/MaiAbdulhamid/my-reads.git`
+* `$ git clone https://github.com/MaiAbdulhamid/my-reads.git` -> Clone Repository.
 * `$ npm install` -> install all project dependencies with.
 * `$ npm start` -> start the development server with.
 
@@ -64,5 +64,5 @@ Every Component which renders just `UI` I made it a `Functional Component`, usin
 
 ## Packages:
 
-- [prop-types](https://www.npmjs.com/package/prop-types) 
+- [prop-types](https://www.npmjs.com/package/prop-types)
 - [throttle-debounce](https://www.npmjs.com/package/throttle-debounce).
